@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="636.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   
+   <!-- Topo com logo e título -->
+   <top>
+      <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
+            <Label text="Doações Pet">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   
+   <!-- Barra de menus inferior -->
+   <bottom>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu text="Perfil">
+               <items>
+                  <MenuItem text="Carrinho de Compras" />
+                  <MenuItem text="Meus Favoritos" />
+                  <MenuItem text="Configurações" />
+               </items>
+            </Menu>
+            <Menu text="Produtos">
+               <items>
+                  <MenuItem text="Cuidados" />
+                  <MenuItem text="Brinquedos" />
+                  <MenuItem text="Higiene e Limpeza" />
+                  <MenuItem text="Outros" />
+               </items>
+            </Menu>
+            <Menu text="Suporte">
+               <items>
+                  <MenuItem text="Sobre nosso trabalho" />
+                  <MenuItem text="Doe para nós" />
+                  <MenuItem text="Contate-nos" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </bottom>
+   
+   <!-- Informações sobre destino da doação -->
+   <right>
+      <VBox alignment="CENTER" prefWidth="220.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Sua doação nos ajudará com:" wrapText="true" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label text="- Alimentação de animais resgatados" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label text="- Tratamentos veterinários" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label text="- Acolhimento de novos resgates" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </right>
+   
+   <!-- Opção para doação de materiais -->
+   <left>
+      <VBox alignment="CENTER" prefWidth="191.0" spacing="10.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <Label text="Preferência por doar ração, brinquedos ou remédios?" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button text="Ir para Doação Material" />
+         </children>
+      </VBox>
+   </left>
+   
+   <!-- Formulário de doação no centro -->
+   <center>
+      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Escolha o valor que deseja doar:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <RadioButton text="R$10" />
+                  <RadioButton text="R$25" />
+                  <RadioButton text="R$50" />
+                  <RadioButton text="R$100" />
+               </children>
+            </HBox>
+            <Label text="Ou:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField promptText="Digite um valor personalizado que queira doar:" prefWidth="393.0" />
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Forma de Pagamento:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox prefWidth="150.0" promptText="Cartão de Crédito" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Nome:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField text="Ronaud" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="E-mail:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField prefWidth="230.0" text="ronaudclementino@ads.fiponline.edu.br" />
+               </children>
+            </HBox>
+            <Button text="Doar Agora" />
+         </children>
+      </VBox>
+   </center>
+   
+</BorderPane>
