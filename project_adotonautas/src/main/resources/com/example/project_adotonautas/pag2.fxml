@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_adotonautas.ProdutosController">
    <top>
       <HBox alignment="CENTER" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,8 +42,8 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Slider max="500.0" showTickLabels="true" />
-            <Button mnemonicParsing="false" text="Aplicar Filtros">
+            <Slider max="500.0" showTickLabels="true" fx:id="precoslider" />
+            <Button mnemonicParsing="false" text="Aplicar Filtros" fx:id="aplicarfiltros" onAction="#AplicarFiltros">
                <VBox.margin>
                   <Insets left="28.0" />
                </VBox.margin>

@@ -11,7 +11,6 @@ public class DoacaoApplication extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("Doacao2.fxml"));
-        fxmlLoader.setController(new DoacaoController());
 
         Scene scene = new Scene(fxmlLoader.load(), 912.0, 543.0);
         stage.setScene(scene);
