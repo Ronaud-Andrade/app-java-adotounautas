@@ -16,7 +16,6 @@ public class InicialApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 730.0, 543.0);
         stage.setScene(scene);
         stage.setTitle("Página Inicial");
-        stage.setScene(scene);
         stage.show();
 
     }

@@ -1,3 +1,4 @@
+package com.example.project_adotonautas.adotonautas_cod;
 public enum StatusAdocao {
     ADOTADO(true),
     NAO_ADOTADO(false);

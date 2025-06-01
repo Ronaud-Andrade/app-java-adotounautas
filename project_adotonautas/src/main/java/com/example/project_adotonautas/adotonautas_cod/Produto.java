@@ -1,3 +1,4 @@
+package com.example.project_adotonautas.adotonautas_cod;
 public class Produto {
     private String nome;
     private double preco;

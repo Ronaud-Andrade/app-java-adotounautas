@@ -1,3 +1,5 @@
+package com.example.project_adotonautas.adotonautas_cod;
+
 public abstract class Animal {
     protected String nome;
     protected int idade;
