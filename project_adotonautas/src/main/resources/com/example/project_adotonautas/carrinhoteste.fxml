@@ -9,7 +9,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -84,74 +83,7 @@
                <children>
                   <ScrollPane layoutX="25.0" layoutY="77.0" prefHeight="327.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <VBox fx:id="vboxProdutos" prefHeight="560.0" prefWidth="360.0" spacing="10.0">
-                           <children>
-                              <SplitPane dividerPositions="0.29797979797979796" prefHeight="99.0" prefWidth="360.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Nome do produto: " />
-                                          <Label layoutX="14.0" layoutY="40.0" text="Quantidade: " />
-                                          <Label layoutX="14.0" layoutY="66.0" text="Preço unitário: " />
-                                          <Spinner layoutX="83.0" layoutY="36.0" prefHeight="25.0" prefWidth="95.0" />
-                                          <Label layoutX="93.0" layoutY="66.0" text="R$ 40,00" />
-                                          <Label layoutX="117.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Kit Banho Pet Clean para Cães e Gatos" />
-                                          <Button layoutX="184.0" layoutY="71.0" mnemonicParsing="false" onAction="#removerItem" text="Remover" />
-                                       </children>
-                                    </AnchorPane>
-                                </items>
-                              </SplitPane>
-                              <SplitPane dividerPositions="0.29797979797979796" layoutX="10.0" layoutY="10.0" prefHeight="99.0" prefWidth="360.0">
-                                 <items>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Nome do produto: " />
-                                          <Label layoutX="14.0" layoutY="40.0" text="Quantidade: " />
-                                          <Label layoutX="14.0" layoutY="66.0" text="Preço unitário: " />
-                                          <Spinner layoutX="83.0" layoutY="36.0" prefHeight="25.0" prefWidth="95.0" />
-                                          <Label layoutX="93.0" layoutY="66.0" text="R$ 40,00" />
-                                          <Label layoutX="117.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Kit Banho Pet Clean para Cães e Gatos" />
-                                          <Button layoutX="184.0" layoutY="71.0" mnemonicParsing="false" onAction="#removerItem" text="Remover" />
-                                       </children>
-                                    </AnchorPane>
-                                 </items>
-                              </SplitPane>
-                              <SplitPane dividerPositions="0.29797979797979796" layoutX="10.0" layoutY="119.0" prefHeight="99.0" prefWidth="360.0">
-                                 <items>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Nome do produto: " />
-                                          <Label layoutX="14.0" layoutY="40.0" text="Quantidade: " />
-                                          <Label layoutX="14.0" layoutY="66.0" text="Preço unitário: " />
-                                          <Spinner layoutX="83.0" layoutY="36.0" prefHeight="25.0" prefWidth="95.0" />
-                                          <Label layoutX="93.0" layoutY="66.0" text="R$ 40,00" />
-                                          <Label layoutX="117.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Kit Banho Pet Clean para Cães e Gatos" />
-                                          <Button layoutX="184.0" layoutY="71.0" mnemonicParsing="false" onAction="#removerItem" text="Remover" />
-                                       </children>
-                                    </AnchorPane>
-                                 </items>
-                              </SplitPane>
-                              <SplitPane dividerPositions="0.29797979797979796" layoutX="10.0" layoutY="228.0" prefHeight="99.0" prefWidth="360.0">
-                                 <items>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Nome do produto: " />
-                                          <Label layoutX="14.0" layoutY="40.0" text="Quantidade: " />
-                                          <Label layoutX="14.0" layoutY="66.0" text="Preço unitário: " />
-                                          <Spinner layoutX="83.0" layoutY="36.0" prefHeight="25.0" prefWidth="95.0" />
-                                          <Label layoutX="93.0" layoutY="66.0" text="R$ 40,00" />
-                                          <Label layoutX="117.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Kit Banho Pet Clean para Cães e Gatos" />
-                                          <Button layoutX="184.0" layoutY="71.0" mnemonicParsing="false" onAction="#removerItem" text="Remover" />
-                                       </children>
-                                    </AnchorPane>
-                                 </items>
-                              </SplitPane>
-                           </children>
-                        </VBox>
+                        <VBox fx:id="vboxProdutos" prefHeight="560.0" prefWidth="360.0" spacing="10.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -168,7 +100,12 @@
                               <Insets left="88.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Subtotal: R$ XX.XX">
+                        <Label text="Subtotal em Reais:">
+                           <VBox.margin>
+                              <Insets left="17.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lbPrecoResumo" layoutX="27.0" layoutY="262.0" text="XX.XX">
                            <VBox.margin>
                               <Insets left="17.0" />
                            </VBox.margin>

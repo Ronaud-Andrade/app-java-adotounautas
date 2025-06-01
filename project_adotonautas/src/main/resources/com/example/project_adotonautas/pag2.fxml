@@ -42,8 +42,8 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Slider max="500.0" showTickLabels="true" fx:id="precoslider" />
-            <Button mnemonicParsing="false" text="Aplicar Filtros" fx:id="aplicarfiltros" onAction="#AplicarFiltros">
+            <Slider fx:id="precoslider" max="500.0" showTickLabels="true" />
+            <Button fx:id="aplicarfiltros" mnemonicParsing="false" onAction="#AplicarFiltros" text="Aplicar Filtros">
                <VBox.margin>
                   <Insets left="28.0" />
                </VBox.margin>
@@ -59,7 +59,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Perfil">
             <items>
-              <MenuItem mnemonicParsing="false" text="Carrinho de Compras" />
+                  <MenuItem fx:id="CarrinhoItem" mnemonicParsing="false" onAction="#changetoCarrinho" text="Carrinho de Compras" />
                   <MenuItem mnemonicParsing="false" text="Meus favoritos" />
                   <MenuItem mnemonicParsing="false" text="Configurações" />
             </items>
@@ -74,8 +74,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Suporte">
             <items>
-              <MenuItem mnemonicParsing="false" text="Sobre nosso trabalho" />
-                  <MenuItem mnemonicParsing="false" text="Doe-nós" />
+                  <MenuItem mnemonicParsing="false" text="Sobre nosso trabalho" />
+                  <MenuItem fx:id="menuItemDoacao" onAction="#changeDoacao" text="Doe-nós" />
                   <MenuItem mnemonicParsing="false" text="Contate-nós" />
             </items>
           </Menu>
@@ -138,82 +138,8 @@
       </VBox>
    </right>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vBoxProduto" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="147.0" prefWidth="496.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <ImageView fitHeight="158.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                           <image>
-                              <Image url="@../../../../../../../../Downloads/kit_banho_pet_clean_para_caes_e_gatos_10347_1_e7474bdb61364227bd7b73dfd704f641.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="344.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Produto:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="69.0" layoutY="14.0" text="Kit Banho Pet Clean para Cães e Gatos">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="14.0" layoutY="41.0" text="Preço:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="54.0" layoutY="41.0" text="R$ 40,00">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-            <SplitPane dividerPositions="0.29797979797979796" layoutX="10.0" layoutY="10.0" prefHeight="147.0" prefWidth="496.0">
-               <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <ImageView fitHeight="158.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-                           <image>
-                              <Image url="@../../../../../../../../Downloads/kit_banho_pet_clean_para_caes_e_gatos_10347_1_e7474bdb61364227bd7b73dfd704f641.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="344.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Produto:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="69.0" layoutY="14.0" text="Kit Banho Pet Clean para Cães e Gatos">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="14.0" layoutY="41.0" text="Preço:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="54.0" layoutY="41.0" text="R$ 40,00">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </items>
-            </SplitPane>
             <SplitPane dividerPositions="0.29797979797979796" layoutX="10.0" layoutY="167.0" prefHeight="147.0" prefWidth="496.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

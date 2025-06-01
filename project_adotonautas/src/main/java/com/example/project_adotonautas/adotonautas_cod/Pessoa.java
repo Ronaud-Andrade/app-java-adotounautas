@@ -65,6 +65,14 @@ public class Pessoa {
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public ArrayList<Produto> getProdutosComprados() {
+        return produtosComprados;
+    }
+
     public void listarComprasDoArquivo(String nomeArquivo) {
         File arquivo = new File(nomeArquivo);
         if (!arquivo.exists()) {
@@ -82,5 +90,8 @@ public class Pessoa {
         } catch (IOException e) {
             System.out.println("Erro ao ler compras: " + e.getMessage());
         }
+
+
+
     }
 }

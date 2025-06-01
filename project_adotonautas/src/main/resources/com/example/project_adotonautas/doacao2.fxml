@@ -37,7 +37,7 @@
          <menus>
             <Menu text="Perfil">
                <items>
-                  <MenuItem text="Carrinho de Compras" />
+                  <MenuItem mnemonicParsing="false" text="Carrinho de Compras" fx:id="CarrinhoItem" onAction="#changetoCarrinho" />
                   <MenuItem text="Meus Favoritos" />
                   <MenuItem text="Configurações" />
                </items>
@@ -47,7 +47,7 @@
                   <MenuItem text="Cuidados" />
                   <MenuItem text="Brinquedos" />
                   <MenuItem text="Higiene e Limpeza" />
-                  <MenuItem text="Outros" />
+                  <MenuItem mnemonicParsing="false" text="Outros" fx:id="ProdutosItem" onAction="#changetoProdutos"/>
                </items>
             </Menu>
             <Menu text="Suporte">

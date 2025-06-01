@@ -1,4 +1,143 @@
 package com.example.project_adotonautas;
 
+import com.example.project_adotonautas.adotonautas_cod.ArmazenaPessoas;
+import com.example.project_adotonautas.adotonautas_cod.Produto;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+
+import java.sql.SQLOutput;
+
+
 public class CarrinhoController {
+
+    @FXML
+    private Label lbPrecoResumo;
+
+    @FXML
+    private Button aplicarfiltros;
+
+    @FXML
+    private VBox vboxProdutos;
+
+    @FXML
+    private Button removeButton1;
+
+    @FXML
+    private Slider sliderpreco;
+
+
+
+    public void initialize(){
+        //lbPrecoResumo.setText("40.00");
+
+        if(ArmazenaPessoas.getPessoa().isEmpty()){
+            adicionarItemNoCarrinho("Kit Banho Pet Clean", 40.0);
+            adicionarItemNoCarrinho("Coleira Fashion", 30.0);
+            adicionarItemNoCarrinho("Brinquedo Mordedor", 30.0);
+        }else{
+            for(Produto p : ArmazenaPessoas.getPessoa().get(0).getProdutosComprados()){
+                adicionarItemNoCarrinho(p.getNome(), p.getPreco());
+            }
+        }
+    }
+
+    public void adicionarItemNoCarrinho(String nomeProduto, double preco){
+
+        // Cria o SplitPane
+        SplitPane splitPane = new SplitPane();
+        splitPane.setPrefHeight(120);
+
+        //Cria o AnchorPane (conteúdo do SplitPane)
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setPrefSize(400, 100);
+
+        //Label do nome do produto
+        Label labelNome = new Label("Nome do produto: " + nomeProduto);
+        labelNome.setLayoutX(10);
+        labelNome.setLayoutY(10);
+
+        // Label da quantidade
+        Label labelQuantidade = new Label("Quantidade:");
+        labelQuantidade.setLayoutX(10);
+        labelQuantidade.setLayoutY(40);
+
+        // Spinner da quantidade
+        Spinner<Integer> spinner = new Spinner<>(1, 100, 1);
+        spinner.setLayoutX(90);
+        spinner.setLayoutY(35);
+        spinner.setPrefWidth(60);
+
+        // Label do preço unitário
+        Label labelPreco = new Label("Preço unitário: R$" + preco);
+        labelPreco.setLayoutX(10);
+        labelPreco.setLayoutY(70);
+
+        // Botão remover
+        Button btnRemover = new Button("Remover");
+        btnRemover.setLayoutX(300);
+        btnRemover.setLayoutY(70);
+
+        // Ação do botão remover
+        btnRemover.setOnAction(event -> {
+            vboxProdutos.getChildren().remove(splitPane);
+            if(ArmazenaPessoas.getPessoa().isEmpty()){
+                System.out.println("Removido com sucesso");
+            }else{
+
+                try{
+                    for(Produto p : ArmazenaPessoas.getPessoa().get(0).getProdutosComprados()) {
+                        if (p.getNome().equals(nomeProduto)) {
+                            ArmazenaPessoas.getPessoa().get(0).getProdutosComprados().remove(p);
+                            System.out.println("Removido com sucesso!");
+                        } else {
+                            System.out.println("Não existe esse produto");
+                        }
+                    }
+                }catch(java.util.ConcurrentModificationException ex){
+                    System.out.println("Esse produto não existe");
+                }
+
+            }
+
+        });
+
+        //Adiciona os elementos dentro do AnchorPane
+        anchorPane.getChildren().addAll(labelNome, labelQuantidade, spinner, labelPreco, btnRemover);
+
+        // Adiciona o AncherPane dentro do SplitPane
+        splitPane.getItems().add(anchorPane);
+
+        // Adiciona no VBox principal
+        vboxProdutos.getChildren().add(splitPane);
+
+    }
+
+    public void AplicarFiltros(ActionEvent event){
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Carrinho");
+        alert.setHeaderText("Filtros aplicados com sucesso");
+        alert.setContentText("Preço definido foi de: " + sliderpreco.getValue());
+        alert.setGraphic(null);
+        alert.show();
+        
+    }
+
+    public void removerItem(ActionEvent event){
+        // Descobre qual botão foi clicado
+        Button botaoClicado = (Button) event.getSource();
+
+        // O pai do botão é o AnchorPane da caixinha do produto
+        AnchorPane caixaProduto = (AnchorPane) botaoClicado.getParent();
+
+        // Remove a caixinha do VBox
+        vboxProdutos.getChildren().remove(caixaProduto);
+
+    }
+
+
 }

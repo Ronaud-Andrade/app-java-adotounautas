@@ -1,11 +1,16 @@
 package com.example.project_adotonautas;
 
+import com.example.project_adotonautas.adotonautas_cod.Animal;
+import com.example.project_adotonautas.adotonautas_cod.Gato;
+import com.example.project_adotonautas.adotonautas_cod.ONGs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,6 +52,11 @@ public class InicialController {
     @FXML
     private ImageView suaImagem;
 
+    @FXML
+    private FlowPane flowPaneAnimais;
+
+
+
     private void abrirJanela(String janela, String nomeJanela) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource(janela));
@@ -57,6 +67,10 @@ public class InicialController {
         stage.setScene(scene);
         stage.show();
     }
+
+    ONGs ong = new ONGs();
+    Animal gato = new Gato("Gugu", 3, "Siames");
+    Animal gato1 = new Gato("Lua", 3, "Siames");
 
     @FXML
     private void initialize() {
@@ -69,6 +83,23 @@ public class InicialController {
         comboBoxSexo.getItems().addAll("Macho", "Femêa");
         comboEspecie.getItems().addAll("Não definida");
 
+        ong.adicionarAnimal(gato);
+        ong.adicionarAnimal(gato1);
+
+        for(Animal a : ong.getAnimaisDisponiveis()){
+            System.out.println("Animal: " + a.getNome());
+        }
+
+        if(
+                ong.getAnimaisDisponiveis().isEmpty()
+        ){
+            adicionarAnimal("Bella", "Caramelo", 5);
+        }else{
+            for(Animal animal : ong.getAnimaisDisponiveis()){
+                adicionarAnimal(animal.getNome(), animal.getRaca(), animal.getIdade());
+            }
+        }
+
 //        sliderIdade.getValue();
 
 //        colocar mais especies no comboBox usando as instancias criadas pelas classes
@@ -76,7 +107,84 @@ public class InicialController {
 
     }
 
+    public void adicionarAnimal(String nome, String raca, int idade){
+        // SplitPane
+        SplitPane splitPane = new SplitPane();
+        splitPane.setPrefHeight(120);
+        splitPane.setPrefWidth(400);
 
+        //Anchorpane das infotmações
+        AnchorPane anchorPane = new AnchorPane();
+
+        //Label nome
+        Label labelNome = new Label("Nome: " + nome);
+        labelNome.setLayoutX(10);
+        labelNome.setLayoutY(5);
+        labelNome.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+
+        //Label raça
+        Label labelRaca = new Label("Raça: " + raca);
+        labelRaca.setLayoutX(10);
+        labelRaca.setLayoutY(30);
+
+        //Label idade
+        Label labelIdade = new Label("Idade: " + idade + " anos");
+        labelIdade.setLayoutX(10);
+        labelIdade.setLayoutY(50);
+
+        //Botão ver mais
+        Button btnVerMais = new Button("Ver mais");
+        btnVerMais.setLayoutX(200);
+        btnVerMais.setLayoutY(20);
+
+        btnVerMais.setOnAction((e) -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Veja mais do animal");
+            alert.setHeaderText("Animal: " + nome);
+            alert.setContentText("Raca: " + raca + ". Idade: " + idade);
+            alert.showAndWait();
+        });
+
+        //Botão de Remover Animal
+        Button btnRemover = new Button("Remover");
+        btnRemover.setLayoutX(200);
+        btnRemover.setLayoutY(70);
+
+        btnRemover.setOnAction((e) -> {
+            flowPaneAnimais.getChildren().remove(splitPane);
+            try{
+
+                for(Animal a : ong.getAnimaisDisponiveis()){
+                    if(a.getNome().equals(nome)){
+                        ong.getAnimaisDisponiveis().remove(a);
+                    }
+                }
+
+                for(Animal a : ong.getAnimaisDisponiveis()){
+                    System.out.println("Animal: " + a.getNome());
+                }
+
+            } catch (java.util.ConcurrentModificationException ex) {
+                System.out.println("Não existem animais.");
+            }
+
+
+        });
+
+
+        anchorPane.getChildren().addAll(labelNome, labelRaca, labelIdade, btnVerMais, btnRemover);
+
+
+        // Adiciona o pane no SplitPane
+        splitPane.getItems().addAll(anchorPane);
+
+        // Adiciona no FlowPane principal
+        flowPaneAnimais.getChildren().add(splitPane);
+
+
+    }
+
+    //Muda para Carrinho
     public void changetoCarrinho(ActionEvent actionEvent) throws IOException {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Alerta!");
@@ -84,12 +192,13 @@ public class InicialController {
         alerta.setContentText("Você será redirecionado para a pág. de Carrinho!");
         alerta.showAndWait();
         if (alerta.getResult() == ButtonType.OK) {
-            abrirJanela("carrinho.fxml", "Página de Carrinho");
+            abrirJanela("carrinhoteste.fxml", "Página de Carrinho");
             Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
             stageAtual.close();
         }
     }
 
+    //Muda para Produtos
     public void changetoProdutos(ActionEvent actionEvent) throws IOException {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Alerta!");
@@ -103,6 +212,7 @@ public class InicialController {
         }
     }
 
+    //Muda para Doação
     public void changeDoacao(ActionEvent actionEvent) throws IOException {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Alerta!");
