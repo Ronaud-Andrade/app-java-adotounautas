@@ -33,6 +33,9 @@ public class CarrinhoController {
     @FXML
     private Slider sliderpreco;
 
+    @FXML
+    private Label lbNomeProduto;
+
 
 
     public void initialize(){
@@ -80,6 +83,18 @@ public class CarrinhoController {
         labelPreco.setLayoutX(10);
         labelPreco.setLayoutY(70);
 
+        //Botão de selecionar produto
+        Button btnVerMais = new Button("Selecionar");
+        btnVerMais.setLayoutX(300);
+        btnVerMais.setLayoutY(40);
+
+        btnVerMais.setOnAction(
+            event -> {
+                double total = spinner.getValue() * preco;
+                lbNomeProduto.setText("Nome do Produto: " + nomeProduto);
+                lbPrecoResumo.setText("Preço: R$ " + total);
+            });
+
         // Botão remover
         Button btnRemover = new Button("Remover");
         btnRemover.setLayoutX(300);
@@ -110,7 +125,7 @@ public class CarrinhoController {
         });
 
         //Adiciona os elementos dentro do AnchorPane
-        anchorPane.getChildren().addAll(labelNome, labelQuantidade, spinner, labelPreco, btnRemover);
+        anchorPane.getChildren().addAll(labelNome, labelQuantidade, spinner, labelPreco, btnRemover, btnVerMais);
 
         // Adiciona o AncherPane dentro do SplitPane
         splitPane.getItems().add(anchorPane);

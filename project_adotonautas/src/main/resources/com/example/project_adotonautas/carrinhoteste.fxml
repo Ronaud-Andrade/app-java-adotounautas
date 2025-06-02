@@ -100,12 +100,12 @@
                               <Insets left="88.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Subtotal em Reais:">
+                        <Label fx:id="lbNomeProduto" layoutX="27.0" layoutY="262.0" text="Nome do Produto:">
                            <VBox.margin>
                               <Insets left="17.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="lbPrecoResumo" layoutX="27.0" layoutY="262.0" text="XX.XX">
+                        <Label fx:id="lbPrecoResumo" text="Preço: R$ XX.XX">
                            <VBox.margin>
                               <Insets left="17.0" />
                            </VBox.margin>
@@ -120,7 +120,7 @@
                               <Insets left="17.0" />
                            </VBox.margin>
                         </Label>
-                        <Button fx:id="finalizarcompra" mnemonicParsing="false" text="Finalizar Comprar">
+                        <Button fx:id="btnfinalizarcompra" mnemonicParsing="false" text="Finalizar Comprar">
                            <VBox.margin>
                               <Insets left="77.0" />
                            </VBox.margin>
@@ -135,7 +135,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Perfil">
                <items>
-                  <MenuItem fx:id="CarrinhoItem" mnemonicParsing="false" onAction="#changetoCarrinho" text="Carrinho de Compras" />
+                  <MenuItem fx:id="CarrinhoItem" mnemonicParsing="false" text="Carrinho de Compras" />
                   <MenuItem mnemonicParsing="false" text="Meus favoritos" />
                   <MenuItem mnemonicParsing="false" text="Configurações" />
                </items>

@@ -77,7 +77,7 @@ public class DoacaoController{
         alerta.setContentText("Você será redirecionado para a pág. de Carrinho!");
         alerta.showAndWait();
         if (alerta.getResult() == ButtonType.OK) {
-            abrirJanela("carrinho.fxml", "Página de Carrinho");
+            abrirJanela("carrinhoteste.fxml", "Página de Carrinho");
             Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
             stageAtual.close();
         }
