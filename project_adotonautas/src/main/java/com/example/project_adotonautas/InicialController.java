@@ -1,8 +1,6 @@
 package com.example.project_adotonautas;
 
-import com.example.project_adotonautas.adotonautas_cod.Animal;
-import com.example.project_adotonautas.adotonautas_cod.Gato;
-import com.example.project_adotonautas.adotonautas_cod.ONGs;
+import com.example.project_adotonautas.adotonautas_cod.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +12,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class InicialController {
 
@@ -71,6 +70,7 @@ public class InicialController {
     ONGs ong = new ONGs();
     Animal gato = new Gato("Gugu", 3, "Siames");
     Animal gato1 = new Gato("Lua", 3, "Siames");
+    Pessoa p1 = new Pessoa("Iago");
 
     @FXML
     private void initialize() {
@@ -135,7 +135,7 @@ public class InicialController {
         //Botão ver mais
         Button btnVerMais = new Button("Ver mais");
         btnVerMais.setLayoutX(200);
-        btnVerMais.setLayoutY(20);
+        btnVerMais.setLayoutY(5);
 
         btnVerMais.setOnAction((e) -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -145,14 +145,39 @@ public class InicialController {
             alert.showAndWait();
         });
 
+        Button btnAdotar = new Button("Adotar");
+        btnAdotar.setLayoutX(200);
+        btnAdotar.setLayoutY(40);
+
+        btnAdotar.setOnAction((e) -> {
+            flowPaneAnimais.getChildren().remove(splitPane);
+             try{
+
+                 for(Animal animal : ong.getAnimaisDisponiveis()){
+                     if(animal.getNome().equals(nome)){
+                         p1.adotarAnimal(animal);
+                         ong.getAnimaisDisponiveis().remove(animal);
+                     }
+                 }
+
+
+             } catch (Exception ex) {
+                 System.out.println("Não existem mais animais");
+             }
+        });
+
         //Botão de Remover Animal
         Button btnRemover = new Button("Remover");
         btnRemover.setLayoutX(200);
-        btnRemover.setLayoutY(70);
+        btnRemover.setLayoutY(90);
 
         btnRemover.setOnAction((e) -> {
             flowPaneAnimais.getChildren().remove(splitPane);
             try{
+
+                for(Animal a : ong.getAnimaisDisponiveis()){
+                    System.out.println("Animal: " + a.getNome());
+                }
 
                 for(Animal a : ong.getAnimaisDisponiveis()){
                     if(a.getNome().equals(nome)){
@@ -160,9 +185,6 @@ public class InicialController {
                     }
                 }
 
-                for(Animal a : ong.getAnimaisDisponiveis()){
-                    System.out.println("Animal: " + a.getNome());
-                }
 
             } catch (java.util.ConcurrentModificationException ex) {
                 System.out.println("Não existem animais.");
@@ -172,7 +194,7 @@ public class InicialController {
         });
 
 
-        anchorPane.getChildren().addAll(labelNome, labelRaca, labelIdade, btnVerMais, btnRemover);
+        anchorPane.getChildren().addAll(labelNome, labelRaca, labelIdade, btnVerMais, btnRemover, btnAdotar);
 
 
         // Adiciona o pane no SplitPane
