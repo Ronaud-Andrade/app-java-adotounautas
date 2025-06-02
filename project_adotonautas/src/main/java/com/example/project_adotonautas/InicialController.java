@@ -28,7 +28,7 @@ public class InicialController {
     private ComboBox<String> comboEspecie;
 
     @FXML
-    private Label seuLabel;
+    private Label lbNome;
 
     @FXML
     private MenuItem CarrinhoItem;
@@ -46,10 +46,13 @@ public class InicialController {
     private Slider sliderIdade;
 
     @FXML
-    private TextArea seuTextArea;
+    private Label lbRaca;
 
     @FXML
-    private ImageView suaImagem;
+    private Label lbIdade;
+
+    @FXML
+    private TextArea taDescrição;
 
     @FXML
     private FlowPane flowPaneAnimais;
@@ -138,11 +141,19 @@ public class InicialController {
         btnVerMais.setLayoutY(5);
 
         btnVerMais.setOnAction((e) -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Veja mais do animal");
-            alert.setHeaderText("Animal: " + nome);
-            alert.setContentText("Raca: " + raca + ". Idade: " + idade);
-            alert.showAndWait();
+            //Gera um aviso sobre as informações do animal
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Veja mais do animal");
+//            alert.setHeaderText("Animal: " + nome);
+//            alert.setContentText("Raca: " + raca + ". Idade: " + idade);
+//            alert.showAndWait();
+
+            lbNome.setText("Nome: " + nome);
+            lbRaca.setText("Raça: " + raca);
+            lbIdade.setText("Idade: " + idade);
+            taDescrição.setText(nome + " é um(a) pet muito fofinho e que adora brincar.");
+
+
         });
 
         Button btnAdotar = new Button("Adotar");

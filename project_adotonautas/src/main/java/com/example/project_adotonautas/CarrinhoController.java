@@ -4,11 +4,15 @@ import com.example.project_adotonautas.adotonautas_cod.ArmazenaPessoas;
 import com.example.project_adotonautas.adotonautas_cod.Produto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 
 
@@ -127,16 +131,53 @@ public class CarrinhoController {
         
     }
 
-    public void removerItem(ActionEvent event){
-        // Descobre qual botão foi clicado
-        Button botaoClicado = (Button) event.getSource();
+//    public void removerItem(ActionEvent event){
+//        // Descobre qual botão foi clicado
+//        Button botaoClicado = (Button) event.getSource();
+//
+//        // O pai do botão é o AnchorPane da caixinha do produto
+//        AnchorPane caixaProduto = (AnchorPane) botaoClicado.getParent();
+//
+//        // Remove a caixinha do VBox
+//        vboxProdutos.getChildren().remove(caixaProduto);
+//
+//    }
 
-        // O pai do botão é o AnchorPane da caixinha do produto
-        AnchorPane caixaProduto = (AnchorPane) botaoClicado.getParent();
+    private void abrirJanela(String janela, String nomeJanela) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource(janela));
 
-        // Remove a caixinha do VBox
-        vboxProdutos.getChildren().remove(caixaProduto);
+        Scene scene = new Scene(fxmlLoader.load(), 912.0, 636.0);
+        Stage stage = new Stage();
+        stage.setTitle(nomeJanela);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    public void changetoProdutos(ActionEvent actionEvent) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Alerta!");
+        alerta.setHeaderText(null);
+        alerta.setContentText("Você será redirecionado para a página de Produtos!");
+        alerta.showAndWait();
+        if (alerta.getResult() == ButtonType.OK) {
+            abrirJanela("pag2.fxml", "Página de Produtos");
+            Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
+            stageAtual.close();
+        }
+    }
+
+    public void changeDoacao(ActionEvent actionEvent) throws IOException {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Alerta!");
+        alerta.setHeaderText(null);
+        alerta.setContentText("Você será redirecionado para a pág. de Doe-nós!");
+        alerta.showAndWait();
+        if (alerta.getResult() == ButtonType.OK) {
+            abrirJanela("doacao2.fxml", "Página de Doação");
+            Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
+            stageAtual.close();
+        }
     }
 
 

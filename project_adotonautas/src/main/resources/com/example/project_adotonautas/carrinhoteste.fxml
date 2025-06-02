@@ -132,23 +132,30 @@
         </items>
       </SplitPane>
       <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="Perfil">
+               <items>
+                  <MenuItem fx:id="CarrinhoItem" mnemonicParsing="false" onAction="#changetoCarrinho" text="Carrinho de Compras" />
+                  <MenuItem mnemonicParsing="false" text="Meus favoritos" />
+                  <MenuItem mnemonicParsing="false" text="Configurações" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Produtos">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Cuidados" />
+                  <MenuItem mnemonicParsing="false" text="Brinquedos" />
+                  <MenuItem mnemonicParsing="false" text="Higiêne e Limpeza" />
+                  <MenuItem fx:id="ProdutosItem" mnemonicParsing="false" onAction="#changetoProdutos" text="Outros" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Suporte">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Sobre nosso trabalho" />
+                  <MenuItem fx:id="menuItemDoacao" onAction="#changeDoacao" text="Doe-nós" />
+                  <MenuItem mnemonicParsing="false" text="Contate-nós" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </children>
 </VBox>

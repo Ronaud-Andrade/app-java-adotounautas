@@ -46,6 +46,8 @@ public class ProdutosController {
         //Adicionei a pessoa na classe ArmazanePessoa por meio do mét0do static
         ArmazenaPessoas.setPessoas(pe1);
 
+
+        //Adiciona os produtos na lista e na interface
         if(petshop.getProdutosDisponiveis().isEmpty()){
             addProduto("Kit Banho", 40.3);
         }else{
