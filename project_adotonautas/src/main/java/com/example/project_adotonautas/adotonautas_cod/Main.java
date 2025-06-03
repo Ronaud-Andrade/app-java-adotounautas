@@ -39,9 +39,11 @@ public class Main {
                     case 2:
                         ong.listarAnimaisDisponiveis();
                         System.out.print("Digite o número do animal para adotar: ");
-                        int escolhaAnimal = scanner.nextInt();
-                        scanner.nextLine();
-                        
+                        int escolhaAnimal = Integer.parseInt(scanner.nextLine());
+                        //int escolhaAnimal = scanner.nextInt();
+
+
+                        //O index do array de animais disponiveis começa do 1.
                         if (escolhaAnimal > 0 && escolhaAnimal <= ong.getAnimaisDisponiveis().size()) {
                             Animal animal = ong.getAnimaisDisponiveis().get(escolhaAnimal - 1);
                             pessoa.adotarAnimal(animal);
@@ -56,8 +58,9 @@ public class Main {
                     case 4:
                         petShop.listarProdutos();
                         System.out.print("Digite o número do produto para comprar: ");
-                        int escolhaProduto = scanner.nextInt();
-                        scanner.nextLine();
+                        int escolhaProduto = Integer.parseInt(scanner.nextLine());
+                        //int escolhaProduto = scanner.nextInt();
+                        //scanner.nextLine();
                         
                         if (escolhaProduto > 0 && escolhaProduto <= petShop.getProdutosDisponiveis().size()) {
                             Produto produto = petShop.getProdutosDisponiveis().get(escolhaProduto - 1);

@@ -204,7 +204,7 @@ public class InicialController {
 
         });
 
-
+        //Adiciona os elementos dentro do anchorPane
         anchorPane.getChildren().addAll(labelNome, labelRaca, labelIdade, btnVerMais, btnRemover, btnAdotar);
 
 

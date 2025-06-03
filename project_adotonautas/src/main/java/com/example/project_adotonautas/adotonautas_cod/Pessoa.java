@@ -55,11 +55,11 @@ public class Pessoa {
 
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(nomeArquivo), StandardCharsets.UTF_8))) {
-            System.out.println("Histórico de adoções:");
-            String linha;
-            while ((linha = reader.readLine()) != null) {
-                System.out.println(linha);
-            }
+                System.out.println("Histórico de adoções:");
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    System.out.println(linha);
+                }
         } catch (IOException e) {
             System.out.println("Erro ao ler adoções: " + e.getMessage());
         }
