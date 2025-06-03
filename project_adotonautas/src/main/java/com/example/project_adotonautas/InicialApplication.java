@@ -17,7 +17,6 @@ public class InicialApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Página Inicial");
         stage.show();
-
     }
 
     public static void main(String[] args) {

@@ -183,6 +183,7 @@ public class InicialController {
         btnRemover.setLayoutY(90);
 
         btnRemover.setOnAction((e) -> {
+            //Remover elementos
             flowPaneAnimais.getChildren().remove(splitPane);
             try{
 
@@ -226,6 +227,7 @@ public class InicialController {
         alerta.showAndWait();
         if (alerta.getResult() == ButtonType.OK) {
             abrirJanela("carrinhoteste.fxml", "Página de Carrinho");
+            //Página atual
             Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
             stageAtual.close();
         }
