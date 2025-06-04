@@ -151,7 +151,7 @@ public class InicialController {
             lbNome.setText("Nome: " + nome);
             lbRaca.setText("Raça: " + raca);
             lbIdade.setText("Idade: " + idade);
-            taDescrição.setText(nome + " é um(a) pet muito fofinho e que adora brincar.");
+            taDescrição.setText(nome + " é um(a) pet muito fofinho(a) e que adora brincar.");
 
 
         });
@@ -166,13 +166,27 @@ public class InicialController {
 
                  for(Animal animal : ong.getAnimaisDisponiveis()){
                      if(animal.getNome().equals(nome)){
+
                          p1.adotarAnimal(animal);
                          ong.getAnimaisDisponiveis().remove(animal);
+
+                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                         alert.setTitle("Informação");
+                         alert.setHeaderText("Aviso!");
+                         alert.setContentText(p1.getNome() + " adotou " + nome + " (" + raca + ", " + idade + " anos)");
+                         alert.showAndWait();
+
                      }
                  }
 
+             }catch (Exception ex) {
 
-             } catch (Exception ex) {
+                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                 alert.setTitle("Informação");
+                 alert.setHeaderText("Aviso!");
+                 alert.setContentText("Não existem mais animais disponiveis.");
+                 alert.showAndWait();
+
                  System.out.println("Não existem mais animais");
              }
         });
@@ -183,29 +197,39 @@ public class InicialController {
         btnRemover.setLayoutY(90);
 
         btnRemover.setOnAction((e) -> {
-            //Remover elementos
             flowPaneAnimais.getChildren().remove(splitPane);
             try{
 
-                for(Animal a : ong.getAnimaisDisponiveis()){
-                    System.out.println("Animal: " + a.getNome());
-                }
+//                for(Animal a : ong.getAnimaisDisponiveis()){
+//                    System.out.println("Animal: " + a.getNome());
+//                }
 
                 for(Animal a : ong.getAnimaisDisponiveis()){
                     if(a.getNome().equals(nome)){
                         ong.getAnimaisDisponiveis().remove(a);
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informação");
+                        alert.setHeaderText("Aviso!");
+                        alert.setContentText("O animal " + nome + " foi removido!");
+                        alert.showAndWait();
+
                     }
                 }
 
 
             } catch (java.util.ConcurrentModificationException ex) {
-                System.out.println("Não existem animais.");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informação");
+                alert.setHeaderText("Aviso!");
+                alert.setContentText("Não existem mais animais disponiveis.");
+                alert.showAndWait();
             }
 
 
         });
 
-        //Adiciona os elementos dentro do anchorPane
+
         anchorPane.getChildren().addAll(labelNome, labelRaca, labelIdade, btnVerMais, btnRemover, btnAdotar);
 
 
@@ -227,7 +251,6 @@ public class InicialController {
         alerta.showAndWait();
         if (alerta.getResult() == ButtonType.OK) {
             abrirJanela("carrinhoteste.fxml", "Página de Carrinho");
-            //Página atual
             Stage stageAtual = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
             stageAtual.close();
         }

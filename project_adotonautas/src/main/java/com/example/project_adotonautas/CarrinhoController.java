@@ -36,6 +36,8 @@ public class CarrinhoController {
     @FXML
     private Label lbNomeProduto;
 
+    private double valor = 0;
+
 
 
     public void initialize(){
@@ -93,6 +95,7 @@ public class CarrinhoController {
                 double total = spinner.getValue() * preco;
                 lbNomeProduto.setText("Nome do Produto: " + nomeProduto);
                 lbPrecoResumo.setText("Preço: R$ " + total);
+                valor = total;
             });
 
         // Botão remover
@@ -104,20 +107,44 @@ public class CarrinhoController {
         btnRemover.setOnAction(event -> {
             vboxProdutos.getChildren().remove(splitPane);
             if(ArmazenaPessoas.getPessoa().isEmpty()){
-                System.out.println("Removido com sucesso");
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informação");
+                alert.setHeaderText("Aviso!");
+                alert.setContentText(nomeProduto + " foi removido!");
+                alert.showAndWait();
+
+                //System.out.println("Removido com sucesso");
             }else{
 
                 try{
                     for(Produto p : ArmazenaPessoas.getPessoa().get(0).getProdutosComprados()) {
                         if (p.getNome().equals(nomeProduto)) {
                             ArmazenaPessoas.getPessoa().get(0).getProdutosComprados().remove(p);
-                            System.out.println("Removido com sucesso!");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Informação");
+                            alert.setHeaderText("Aviso!");
+                            alert.setContentText(nomeProduto + " foi removido!");
+                            alert.showAndWait();
+                            //System.out.println("Removido com sucesso!");
                         } else {
-                            System.out.println("Não existe esse produto");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Informação");
+                            alert.setHeaderText("Aviso!");
+                            alert.setContentText("Não existe produtos!");
+                            alert.showAndWait();
+
+                            //System.out.println("Não existe esse produto");
                         }
                     }
                 }catch(java.util.ConcurrentModificationException ex){
-                    System.out.println("Esse produto não existe");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Informação");
+                    alert.setHeaderText("Aviso!");
+                    alert.setContentText("Não existe produtos!");
+                    alert.showAndWait();
                 }
 
             }
@@ -132,6 +159,12 @@ public class CarrinhoController {
 
         // Adiciona no VBox principal
         vboxProdutos.getChildren().add(splitPane);
+
+    }
+
+    public void FinalizarCompras(ActionEvent event){
+        ArmazenaPessoas.AtibuirValor(valor);
+
 
     }
 

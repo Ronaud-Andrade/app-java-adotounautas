@@ -87,7 +87,16 @@ public class ProdutosController {
             vBoxProduto.getChildren().remove(splitPane);
             for(Produto p : petshop.getProdutosDisponiveis()){
                 if(p.getNome().equals(nomeProduto)){
+
                     pe1.comprarProduto(p);
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Aviso!");
+                    alert.setContentText(pe1.getNome() + " comprou " + nomeProduto + " - R$" + preco);
+                    alert.showAndWait();
+
+
+
                     //System.out.println(pe1.getNome() + " comprou o produto " + p.getNome() + " com sucesso e foi adicionado no carrinho de compras.");
                 }
             }

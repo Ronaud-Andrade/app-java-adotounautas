@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 public class AnimalTest {
 
+
     private Animal gato = new Gato("Mimi", 2, "Siamês");
 
     @Test
