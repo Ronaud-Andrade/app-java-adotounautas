@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class ArmazenaPessoas {
     private static double valorTotalCompras;
-    Pessoa pessoa;
     private static ArrayList<Pessoa> pessoas = new ArrayList<>();
 
     public static void AtibuirValor(double valor){
@@ -13,6 +12,10 @@ public class ArmazenaPessoas {
 
     public static double getValorTotalCompras(){
         return valorTotalCompras;
+    }
+
+    public static void ClearValor(){
+        valorTotalCompras = 0;
     }
 
     public static void setPessoas(Pessoa pessoa) {

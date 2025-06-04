@@ -31,6 +31,9 @@ public class CarrinhoController {
     private Button removeButton1;
 
     @FXML
+    private Label lbTotalCompras;
+
+    @FXML
     private Slider sliderpreco;
 
     @FXML
@@ -96,7 +99,10 @@ public class CarrinhoController {
                 lbNomeProduto.setText("Nome do Produto: " + nomeProduto);
                 lbPrecoResumo.setText("Preço: R$ " + total);
                 valor = total;
+                ArmazenaPessoas.AtibuirValor(valor);
+                lbTotalCompras.setText("Total: R$ " + ArmazenaPessoas.getValorTotalCompras());
             });
+
 
         // Botão remover
         Button btnRemover = new Button("Remover");
@@ -163,7 +169,25 @@ public class CarrinhoController {
     }
 
     public void FinalizarCompras(ActionEvent event){
-        ArmazenaPessoas.AtibuirValor(valor);
+
+        System.out.println(ArmazenaPessoas.getValorTotalCompras());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText("Valor total a ser pago");
+        alert.setContentText("O valor total das compras deram: " + ArmazenaPessoas.getValorTotalCompras());
+        alert.showAndWait();
+
+        if(alert.getResult() == ButtonType.OK){
+            ArmazenaPessoas.ClearValor();
+
+            lbTotalCompras.setText("Total: R$ XX.XX");
+
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Aviso");
+            alert1.setHeaderText("Obrigado pela preferência!");
+            alert1.showAndWait();
+        }
 
 
     }
