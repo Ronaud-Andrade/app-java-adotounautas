@@ -8,4 +8,6 @@ module com.example.project_adotonautas {
 
     opens com.example.project_adotonautas to javafx.fxml;
     exports com.example.project_adotonautas;
+
+    exports com.example.project_adotonautas.testes to junit;
 }

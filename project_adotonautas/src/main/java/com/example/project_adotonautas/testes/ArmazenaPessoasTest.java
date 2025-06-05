@@ -1,36 +1,37 @@
-package Adotonautas.Testes;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package com.example.project_adotonautas.testes;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Before;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.example.project_adotonautas.adotonautas_cod.*;
+import org.junit.Test;
 
-import Adotonautas.ArmazenaPessoas;
-import Adotonautas.Pessoa;
+
+import static org.junit.Assert.*;
 
 public class ArmazenaPessoasTest {
 
-    @BeforeEach
+    @Before
     public void setUp() {
         ArmazenaPessoas.ClearValor();
         ArmazenaPessoas.getPessoa().clear();
     }
 
     @Test
-    void testAtibuirValor() {
+    public void testAtibuirValor() {
         ArmazenaPessoas.AtibuirValor(100.00);
         ArmazenaPessoas.AtibuirValor(50.00);
         assertEquals(150.00, ArmazenaPessoas.getValorTotalCompras(), 0.001);
     }
 
     @Test
-    void testClearValor() {
+    public void testClearValor() {
         ArmazenaPessoas.AtibuirValor(200.00);
         ArmazenaPessoas.ClearValor();
         assertEquals(0.00, ArmazenaPessoas.getValorTotalCompras(), 0.001);
     }
 
     @Test
-    void testGetPessoa() {
+    public void testGetPessoa() {
         Pessoa pessoaUm = new Pessoa("Iago");
         Pessoa pessoaDois = new Pessoa("Ronaud");
         Pessoa pessoaTres = new Pessoa("João");
@@ -43,14 +44,14 @@ public class ArmazenaPessoasTest {
     }
 
     @Test
-    void testGetValorTotalCompras() {
+    public void testGetValorTotalCompras() {
         ArmazenaPessoas.AtibuirValor(100.00);
         ArmazenaPessoas.AtibuirValor(50.00);
         assertEquals(150.00, ArmazenaPessoas.getValorTotalCompras(), 0.001);
     }
 
     @Test
-    void testSetPessoas() {
+    public void testSetPessoas() {
         Pessoa pessoaUm = new Pessoa("Iago");
         Pessoa pessoaDois = new Pessoa("Ronaud");
         Pessoa pessoaTres = new Pessoa("João");
